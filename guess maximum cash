@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+ll sol(int m,int n,int x,int y) {
+  ll ind;
+  ind = ((y-1)*m)+ (x);
+  return ind;
+}
+ll solve( ll n) {
+  ll maxprime = -1;
+  while(n%2 == 0) {
+    maxprime = 2;
+    n >>= 1;
+  }
+  for(int i=3; i<=sqrt(n); i+= 2) {
+    while(n%i==0) {
+      maxprime = i;
+      n = n/i;
+    }
+  }
+  if(n>2) {
+    maxprime = n;
+  }
+  return maxprime;
+}
+
+int main() {
+  int t;
+  cin>>t;
+  while(t--) {
+    int res = 0;
+    int m,n,x,y;
+    cin>>m>>n>>x>>y;
+    int ans = sol(m,n,x,y);
+    res = solve(ans);
+    cout<<"$ " <<res <<endl;
+    
+  }
+  return 0;
+}
